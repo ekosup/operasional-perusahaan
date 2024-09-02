@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-background-color="#2c3e50" data-transition="slide">
+          <h4 style="color: #ecf0f1">Understanding What "Data-Driven" Means</h4>
+          <p style="color: #ecf0f1">
+            A data-driven approach involves making decisions based on data
+            analysis rather than intuition or observation.
+          </p>
+        </section>
+
+        <section data-background-color="#34495e" data-transition="slide">
+          <h4 style="color: #ecf0f1">Example: Retail Store</h4>
+          <p style="color: #ecf0f1">
+            Without data, a store manager might decide to stock more of a
+            certain product just because they think it’s popular. With a
+            data-driven approach, they analyze past sales data to see which
+            products are selling the most and when.
+          </p>
+        </section>
+
+        <section data-background-color="#1abc9c" data-transition="slide">
+          <h4 style="color: #ecf0f1">Python Example: Analyzing Sales Data</h4>
+          <pre>
+			<code class="language-python">
+				import pandas as pd
+				
+				# Example sales data
+				data = {
+					'Product': ['Product A', 'Product B', 'Product C'],
+					'January': [100, 150, 200],
+					'February': [120, 180, 160],
+					'March': [130, 170, 210]
+				}
+				
+				# Create a DataFrame
+				df = pd.DataFrame(data)
+				
+				# Calculate total sales for each product
+				df['Total Sales'] = \
+					df[['January', 'February', 'March']].sum(axis=1)
+				
+				# Find the product with the highest sales
+				best_selling_product = df.loc[df['Total Sales'].idxmax()]
+				
+				print(best_selling_product)
+			</code>
+			</pre>
+        </section>
+
+        <section data-background-color="#2c3e50" data-transition="slide">
+          <h4 style="color: #ecf0f1">Step 2: Collecting the Right Data</h4>
+          <p style="color: #ecf0f1">
+            To make a data-driven approach effective, it’s crucial to collect
+            the right data that aligns with business objectives.
+          </p>
+        </section>
+
+        <section data-background-color="#34495e" data-transition="slide">
+          <h4 style="color: #ecf0f1">Types of Data to Collect</h4>
+          <ul style="color: #ecf0f1">
+            <li>Customer Data</li>
+            <li>Sales Data</li>
+            <li>Operational Data</li>
+            <li>Market Data</li>
+          </ul>
+        </section>
+
+        <section data-background-color="#1abc9c" data-transition="slide">
+          <h4 style="color: #ecf0f1">
+            Python Example: Collecting Feedback Data
+          </h4>
+          <pre><code class="language-python">
+		# Example feedback data from different sources
+		feedback_survey = [
+			"Great service!", 
+			"Product quality could be better.", 
+			"Very satisfied with my purchase."
+		]
+		social_media_comments = [
+			"Love the new product range!", 
+			"Not happy with the delivery time.", 
+			"Amazing customer support."
+		]
+		support_tickets = [
+			"Issue with billing.", 
+			"Need help with the product installation.", 
+			"Request for a refund."
+		]
+		
+		# Combine all feedback into one list
+		all_feedback = \
+			feedback_survey \
+			+ social_media_comments \
+			+ support_tickets
+		
+		# Display all feedback collected
+		for feedback in all_feedback:
+			print(feedback)
+			</code></pre>
+        </section>
+
+        <section data-background-color="#2c3e50" data-transition="slide">
+          <h2 style="color: #ecf0f1">Step 3: Cleaning and Preparing Data</h2>
+          <p style="color: #ecf0f1">
+            Cleaning data ensures the analysis will be accurate and reliable. It
+            involves removing duplicates, handling missing values, and
+            correcting errors.
+          </p>
+        </section>
+
+        <section data-background-color="#34495e" data-transition="slide">
+          <h4 style="color: #ecf0f1">Key Steps in Data Cleaning</h4>
+          <ul style="color: #ecf0f1">
+            <li>Removing Duplicates</li>
+            <li>Handling Missing Values</li>
+            <li>Correcting Errors</li>
+            <li>Standardizing Formats</li>
+          </ul>
+        </section>
+
+        <section data-background-color="#1abc9c" data-transition="slide">
+          <h4 style="color: #ecf0f1">Python Example: Cleaning Customer Data</h4>
+          <pre><code class="language-python">
+		import pandas as pd
+		
+		# Example customer data with duplicates and missing values
+		data = {
+			'CustomerID': [1, 2, 2, 3, 4, None, 5],
+			'Name': ['John Doe', 'Jane Smith', 'Jane Smith', 'Jim Beam', None, 'Anna Bell', 'Anna Bell'],
+			'PurchaseAmount': [100, 150, 150, 200, 250, 300, None]
+		}
+		
+		# Create a DataFrame
+		df = pd.DataFrame(data)
+		
+		# Display original data
+		print("Original Data:")
+		print(df)
+		
+		# Remove duplicate entries
+		df = df.drop_duplicates()
+		
+		# Remove rows with missing values
+		df = df.dropna()
+		
+		# Display cleaned data
+		print("\nCleaned Data:")
+		print(df)
+			</code></pre>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>
